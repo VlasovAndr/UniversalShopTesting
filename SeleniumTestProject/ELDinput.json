@@ -1,0 +1,10 @@
+{
+  "urlAdress": "https://www.eldorado.ru/",
+  "searchField": "//input[@name= 'search']",
+  "itemForSearch": "iphone 11",
+  "searchButton": "//button [@type = 'submit']",
+  "selectedItemInSearch": "//a[@data-dy='title']",
+  "addToBasketButton": "//span[@class ='hK iK']",
+  "basketButton": "//span[@data-rete-event-custom-name='cart_icon_cost']",
+  "itemInBasket": "//a[@class ='basketBlockCels_nameProdItemLink q-basketBlockCels_nameProdItemLink']"
+}

@@ -1,0 +1,10 @@
+{
+  "urlAdress": "https://www.dns-shop.ru/",
+  "searchField": "//div[@class='header-menu-wrapper']//input[@name= 'q']",
+  "itemForSearch": "iphone 11",
+  "searchButton": "//div[@class ='container']//span[@class='ui-input-search__icon ui-input-search__icon_search ui-input-search__icon_presearch']",
+  "selectedItemInSearch": "//span[contains(text(), 'iPhone 11')]",
+  "addToBasketButton": "//button[contains(@class,'button-ui buy-btn')]",
+  "basketButton": "//span[@class = 'cart-link__price']",
+  "itemInBasket": "//a[@class = 'cart-items__product-name-link']"
+}
