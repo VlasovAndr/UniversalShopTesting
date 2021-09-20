@@ -24,6 +24,7 @@ namespace SeleniumTestProject
         [Theory]
         [InlineData(@"ELDinput.json")]
         [InlineData(@"DNSinput.json")]
+        [InlineData(@"WILDBERRIES.json")]
 
         public async void UniversalShopTesting(string pathToJsonFile)
         {
