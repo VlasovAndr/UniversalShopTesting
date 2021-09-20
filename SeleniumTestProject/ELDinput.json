@@ -4,7 +4,7 @@
   "itemForSearch": "iphone 11",
   "searchButton": "//button [@type = 'submit']",
   "selectedItemInSearch": "//a[@data-dy='title']",
-  "addToBasketButton": "//li[@data-product-index='1']//span[@data-dy='buttonText']",
-  "basketButton": "//span[@data-rete-event-custom-name='cart_icon_cost']",
+  "addToBasketButton": "//div[@class ='priceContainer']//span[@class = 'gtmAddToBasket addToCartBigCP cartButtonText']",
+  "basketButton": "//div[@class ='dy-modal-wrapper']//a[@href = '/personal/basket.php']",
   "itemInBasket": "//a[@class ='basketBlockCels_nameProdItemLink q-basketBlockCels_nameProdItemLink']"
 }
