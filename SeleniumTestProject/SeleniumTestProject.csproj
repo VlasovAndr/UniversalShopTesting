@@ -7,24 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CITILINK.json" />
     <None Remove="DNSinput.json" />
     <None Remove="ELDinput.json" />
     <None Remove="WILDBERRIES.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="DNSinput.json">
+    <Content Include="ConfigFiles\DNS.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ELDinput.json">
+    <Content Include="ConfigFiles\ELDORADO.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="WILDBERRIES.json">
+    <Content Include="ConfigFiles\WILDBERRIES.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="92.0.4515.10700" />

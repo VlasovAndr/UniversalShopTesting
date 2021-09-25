@@ -22,9 +22,9 @@ namespace SeleniumTestProject
     {
 
         [Theory]
-        [InlineData(@"ELDinput.json")]
-        [InlineData(@"DNSinput.json")]
-        [InlineData(@"WILDBERRIES.json")]
+        [InlineData(@"ConfigFiles\ELDORADO.json")]
+        [InlineData(@"ConfigFiles\DNS.json")]
+        [InlineData(@"ConfigFiles\WILDBERRIES.json")]
 
         public async void UniversalShopTesting(string pathToJsonFile)
         {
