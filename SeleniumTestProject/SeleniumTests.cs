@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -26,32 +27,30 @@ namespace SeleniumTestProject
         [InlineData(@"ConfigFiles\DNS.json")]
         [InlineData(@"ConfigFiles\WILDBERRIES.json")]
 
-        public async void UniversalShopTesting(string pathToJsonFile)
+        public void UniversalShopTesting(string pathToConfigFile)
         {
-            using (FileStream fs = new FileStream(pathToJsonFile, FileMode.OpenOrCreate))
-            {
 
-                ConfigElements readJsonFile = await System.Text.Json.JsonSerializer.DeserializeAsync<ConfigElements>(fs);
-                ChromeOptions options = new ChromeOptions();
-                options.AddArguments("--disable-notifications");
-                IWebDriver driver = new ChromeDriver(options);
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            var configElements = JsonConvert.DeserializeObject<ConfigElements>(File.ReadAllText(pathToConfigFile));
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--disable-notifications");
+            IWebDriver driver = new ChromeDriver(options);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
-                driver.Navigate().GoToUrl(readJsonFile.UrlAdress);
-                driver.FindElement(By.XPath(readJsonFile.SearchField)).SendKeys(readJsonFile.ItemForSearch);
-                driver.FindElement(By.XPath(readJsonFile.SearchButton)).Click();
-                var expectedResult = (driver.FindElement(By.XPath(readJsonFile.SelectedItemInSearch))).Text.ToLower().Replace(",", string.Empty);
-                driver.FindElement(By.XPath(readJsonFile.SelectedItemInSearch)).Click();
-                driver.FindElement(By.XPath(readJsonFile.AddToBasketButton)).Click();
-                Thread.Sleep(3000);
-                driver.FindElement(By.XPath(readJsonFile.BasketButton)).Click();
-                var actualResult = (driver.FindElement(By.XPath(readJsonFile.ItemInBasket))).Text.ToLower().Replace(",",string.Empty) ;
-                var actualCount = (driver.FindElements(By.XPath(readJsonFile.ItemInBasket))).Count;
+            driver.Navigate().GoToUrl(configElements.UrlAdress);
+            driver.FindElement(By.XPath(configElements.SearchField)).SendKeys(configElements.ItemForSearch);
+            driver.FindElement(By.XPath(configElements.SearchButton)).Click();
+            var expectedResult = (driver.FindElement(By.XPath(configElements.SelectedItemInSearch))).Text.ToLower().Replace(",", string.Empty);
+            driver.FindElement(By.XPath(configElements.SelectedItemInSearch)).Click();
+            driver.FindElement(By.XPath(configElements.AddToBasketButton)).Click();
+            Thread.Sleep(3000);
+            driver.FindElement(By.XPath(configElements.BasketButton)).Click();
+            var actualResult = (driver.FindElement(By.XPath(configElements.ItemInBasket))).Text.ToLower().Replace(",", string.Empty);
+            var actualCount = (driver.FindElements(By.XPath(configElements.ItemInBasket))).Count;
 
-                Assert.Contains(actualResult, expectedResult);
-                Assert.Equal(1, actualCount);
-                driver.Quit();
-            }
+            Assert.Contains(actualResult, expectedResult);
+            Assert.Equal(1, actualCount);
+            driver.Quit();
+
         }
     }
 }
