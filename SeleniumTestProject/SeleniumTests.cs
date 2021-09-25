@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SeleniumTestProject
 {
-    class JsonReaderItem
+    class ConfigElements
     {
         public string UrlAdress { get; set; }
         public string SearchField { get; set; }
@@ -31,7 +31,7 @@ namespace SeleniumTestProject
             using (FileStream fs = new FileStream(pathToJsonFile, FileMode.OpenOrCreate))
             {
 
-                JsonReaderItem readJsonFile = await System.Text.Json.JsonSerializer.DeserializeAsync<JsonReaderItem>(fs);
+                ConfigElements readJsonFile = await System.Text.Json.JsonSerializer.DeserializeAsync<ConfigElements>(fs);
                 ChromeOptions options = new ChromeOptions();
                 options.AddArguments("--disable-notifications");
                 IWebDriver driver = new ChromeDriver(options);
