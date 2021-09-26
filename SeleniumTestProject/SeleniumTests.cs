@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.IO;
 using System.Threading;
@@ -34,19 +36,21 @@ namespace SeleniumTestProject
             var configElements = JsonConvert.DeserializeObject<ConfigElements>(File.ReadAllText(pathToConfigFile));
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
+            options.PageLoadStrategy = PageLoadStrategy.Eager;
             IWebDriver driver = new ChromeDriver(options);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             driver.Navigate().GoToUrl(configElements.UrlAdress);
-            driver.FindElement(By.XPath(configElements.SearchField)).SendKeys(configElements.ItemForSearch);
-            driver.FindElement(By.XPath(configElements.SearchButton)).Click();
-            var expectedResult = (driver.FindElement(By.XPath(configElements.SelectedItemInSearch))).Text.ToLower().Replace(",", string.Empty);
-            driver.FindElement(By.XPath(configElements.SelectedItemInSearch)).Click();
-            driver.FindElement(By.XPath(configElements.AddToBasketButton)).Click();
-            Thread.Sleep(3000);
-            driver.FindElement(By.XPath(configElements.BasketButton)).Click();
-            var actualResult = (driver.FindElement(By.XPath(configElements.ItemInBasket))).Text.ToLower().Replace(",", string.Empty);
-            var actualCount = (driver.FindElements(By.XPath(configElements.ItemInBasket))).Count;
+            Thread.Sleep(2000);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.SearchField))).SendKeys(configElements.ItemForSearch + Keys.Enter);
+            Thread.Sleep(2000);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.SelectedItemInSearch))).Click();
+            var expectedResult = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.NameOfItem))).Text.ToLower().Replace(",", string.Empty);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.AddToBasketButton))).Click();
+            Thread.Sleep(2000);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.BasketButton))).Click();
+            var actualResult = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.ItemInBasket))).Text.ToLower().Replace(",", string.Empty);
+            var actualCount = driver.FindElements(By.XPath(configElements.ItemInBasket)).Count;
 
             Assert.Contains(actualResult, expectedResult);
             Assert.Equal(1, actualCount);
