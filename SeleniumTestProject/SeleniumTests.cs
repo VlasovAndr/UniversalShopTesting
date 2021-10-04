@@ -41,7 +41,8 @@ namespace SeleniumTestProject
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
             driver.Navigate().GoToUrl(configElements.UrlAdress);
-            Thread.Sleep(2000);
+            driver.Manage().Window.Maximize();
+            Thread.Sleep(3000);
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.SearchField))).SendKeys(configElements.ItemForSearch + Keys.Enter);
             Thread.Sleep(2000);
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(configElements.SelectedItemInSearch))).Click();
