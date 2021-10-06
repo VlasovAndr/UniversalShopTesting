@@ -21,7 +21,7 @@ namespace SeleniumTestProject
         public void UniversalShopTesting(string pathToConfigFile)
         {
 
-            var configElements = JsonConvert.DeserializeObject<ConfigElements>(File.ReadAllText(pathToConfigFile));
+            var configElements = JsonConvert.DeserializeObject<Website>(File.ReadAllText(pathToConfigFile));
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--disable-notifications");
             options.PageLoadStrategy = PageLoadStrategy.Eager;

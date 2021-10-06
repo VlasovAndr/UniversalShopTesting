@@ -1,7 +1,7 @@
 ﻿
 namespace SeleniumTestProject
 {
-    class ConfigElements
+    class Website
     {
         public string UrlAdress { get; set; }
         public string SearchField { get; set; }
