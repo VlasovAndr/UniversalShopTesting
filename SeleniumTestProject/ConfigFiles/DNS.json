@@ -1,11 +1,23 @@
 {
-  "UrlAdress": "https://www.dns-shop.ru/",
-  "SearchField": "//div[@class='header-menu-wrapper']//input[@name= 'q']",
-  "ItemForSearch": "iphone 11",
-  "SearchButton": "//div[@class ='container']//span[@class='ui-input-search__icon ui-input-search__icon_search ui-input-search__icon_presearch']",
-  "SelectedItemInSearch": "//a[contains(@class,'catalog-product__name')]",
-  "NameOfItem": "//h1[@class = 'product-card-top__title']",
-  "AddToBasketButton": "//button[contains(@class,'button-ui buy-btn')]",
-  "BasketButton": "//span[@class = 'cart-link__price']",
-  "ItemInBasket": "//a[@class = 'cart-items__product-name-link']"
+  "Url": "https://www.dns-shop.ru/",
+  "Pages": {
+    "StartPage": {
+      "SearchField": "//div[@class='header-menu-wrapper']//input[@name= 'q']",
+      "ItemForSearch": "iphone 11"
+    },
+
+    "ProductListPage": {
+      "SelectedItem": "//a[contains(@class,'catalog-product__name')]"
+    },
+
+    "ProductDetailsPage": {
+      "NameOfItem": "//h1[@class = 'product-card-top__title']",
+      "AddToBasketButton": "//button[contains(@class,'button-ui buy-btn')]",
+      "BasketButton": "//span[@class = 'cart-link__price']"
+    },
+
+    "BasketPage": {
+      "NameOfItem": "//a[@class = 'cart-items__product-name-link']"
+    }
+  }
 }
