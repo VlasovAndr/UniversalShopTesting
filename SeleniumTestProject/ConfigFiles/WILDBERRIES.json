@@ -1,12 +1,23 @@
 {
-  "UrlAdress": "https://www.wildberries.ru/",
-  "SearchField": "//input[@class = 'search-catalog__input j-search-input']",
-  "ItemForSearch": "iphone 12",
-  "SearchButton": "//button[@class = 'search-catalog__btn search-catalog__btn--search j-btn-search']",
-  "SelectedItemInSearch": "//span[@class = 'goods-name']",
-  "NameOfItem": "//span[@data-link='text{:productCard^goodsName}']",
-  "AddToBasketButton": "//div[@class='same-part-kt__btn-wrap']//button[@class = 'btn-main']",
-  "BasketButton": "//span[@class ='navbar-pc__icon navbar-pc__icon--basket']",
-  "ItemInBasket": "//span[@class='good-info__good-name']"
-}
+  "Url": "https://www.wildberries.ru/",
+  "Pages": {
+    "StartPage": {
+      "SearchField": "//input[@class = 'search-catalog__input j-search-input']",
+      "ItemForSearch": "iphone 12"
+    },
 
+    "ProductListPage": {
+      "SelectedItem": "//span[@class = 'goods-name']"
+    },
+
+    "ProductDetailsPage": {
+      "NameOfItem": "//span[@data-link='text{:productCard^goodsName}']",
+      "AddToBasketButton": "//div[@class='same-part-kt__btn-wrap']//button[@class = 'btn-main']",
+      "BasketButton": "//span[@class ='navbar-pc__icon navbar-pc__icon--basket']"
+    },
+
+    "BasketPage": {
+      "NameOfItem": "//span[@class='good-info__good-name']"
+    }
+  }
+}
