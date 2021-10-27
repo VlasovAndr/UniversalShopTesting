@@ -11,7 +11,7 @@
     },
 
     "ProductDetailsPage": {
-      "NameOfItem": "//span[@data-link='text{:productCard^goodsName}']",
+      "NameOfItem": "//span[contains(@data-link,'goodsName')]",
       "AddToBasketButton": "//div[@class='same-part-kt__btn-wrap']//button[@class = 'btn-main']",
       "BasketButton": "//span[@class ='navbar-pc__icon navbar-pc__icon--basket']"
     },
